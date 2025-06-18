@@ -40,5 +40,4 @@ public class Contact {
 	public String  getAddress() {
 		return address;
 	}
-
 }

@@ -59,7 +59,7 @@ public class main {
 	}
 	
 	public static void addContact(List<Contact>infoContact, Scanner scanner) {
-		Contact contact = new Contact("indefinido", "indefinido", "indefinido");
+		Contact contact = new Contact();
 		
 		String name = null;
 		String number = null;
@@ -81,18 +81,13 @@ public class main {
 		contact.setAddress(address);
 		System.out.println();
 
-		infoContact.add(new Contact(contact.getName(), contact.getNumber(), contact.getAddress()));
+		infoContact.add(Contact);
 		System.out.println();
 	}
 	
 	public static void changeDados(List<Contact>infoContact, Scanner scanner) {
 		
 		int index = -1;
-		int menu = -1;
-		String name = null;
-		String number = null;
-		String address = null;
-		
 		
 		System.out.println();
 		if (infoContact.size() > 0) {
@@ -107,7 +102,6 @@ public class main {
 
 				index = scanner.nextInt();
 				index--;
-				menu = -1;
 			}
 
 			while (menu < 1 || menu > 4) {
@@ -117,31 +111,31 @@ public class main {
 				System.out.println("2 - Número");
 				System.out.println("3 - Endereço");
 				System.out.println("4 - Sair");
-				menu = scanner.nextInt();
+				index = scanner.nextInt();
 			}
 			switch (menu) {
 			case 1:
 				scanner.nextLine();
 				System.out.println("Qual o nome você gostaria de coloca-lo para alterar?");
 				name = scanner.nextLine();
-				Contact c = infoContact.get(index);
-				c.setName(name);
+				Contact contact = infoContact.get(index);
+				contact.setName(name);
 
 				break;
 			case 2:
 				scanner.nextLine();
 				System.out.println("Qual é o número que você quer colocar para edita-lo?");
 				number = scanner.nextLine();
-				Contact d = infoContact.get(index);
-				d.setNumber(number);
+				Contact contact = infoContact.get(index);
+				contact.setNumber(number);
 
 				break;
 			case 3:
 				scanner.nextLine();
 				System.out.println("Qual é o endereço atual desse contato?");
 				address = scanner.nextLine();
-				Contact e = infoContact.get(index);
-				e.setNumber(address);
+				Contact contact = infoContact.get(index);
+				contact.setNumber(address);
 				break;
 			case 4:
 				System.out.println("Retornando para a página principal...");
@@ -173,9 +167,7 @@ public class main {
 	}
 	public static void deleteContact(List<Contact>infoContact, Scanner scanner) {
 		int index;
-		if (infoContact.isEmpty()) {
-			System.out.println("A lista está vazia!");
-		} else {
+		if (!infoContact.isEmpty()) {
 			for (index = 0; index <= (infoContact.size() - 1); index++) {
 				System.out.println(index + 1 + " -- " + infoContact.get(index).getName() + " -- "
 						+ infoContact.get(index).getNumber() + " -- " + infoContact.get(index).getAddress());
@@ -188,6 +180,9 @@ public class main {
 			}
 			infoContact.remove(index);
 			System.out.println("Contato removido com sucesso!");
+			System.out.println("A lista está vazia!");
+		} else {
+			System.out.println("A lista está vazia!");
 		}
 		System.out.println();
 	}

@@ -10,12 +10,6 @@ public class Contact {
 		this.number = number;
 		this.address = address;
 	}
-	public void ContactCleaner() {
-	    this.name = "indefinido";
-	    this.number = "indefinido";
-	    this.address = "indefinido";
-	}
-
 
 	public void setName(String name) {
 		this.name = name;
